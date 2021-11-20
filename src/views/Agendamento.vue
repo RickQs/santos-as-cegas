@@ -12,8 +12,8 @@
                 </h2>
                 <div :id="`panelsStayOpen-collapse${capitalizeString(weekday)}`" class="accordion-collapse collapse show" :aria-labelledby="`panelsStayOpen-heading${capitalizeString(weekday)}`">
                     <div class="accordion-body">
-                        <div class="d-flex justify-content-evenly flex-wrap">
-                            <router-link v-for="items in date" :key="items.id" to="views/cadastro" class="btn btn-light border-success">
+                        <div class="d-flex justify-content-evenly flex-wrap gap-3">
+                            <router-link v-for="items in date" :key="items.id" to="views/cadastro" class="date-card d-flex flex-column justify-content-center btn btn-light border-success">
                                 <span>
                                     <strong>{{ items.date }}</strong>
                                 </span>
@@ -29,23 +29,26 @@
 </template>
 
 <script>
-    import dates from '@/dates.json'
+import dates from '@/dates.json'
 
-    export default {
-        data() {
-            return {
-                dates: dates[0],
-                weekdays: ['Terças-feiras', 'Quartas-feiras']
-            }
-        },
-        methods: {
-            capitalizeString(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1)
-            }
+export default {
+    data() {
+        return {
+            dates,
+            weekdays: ['Terças-feiras', 'Quartas-feiras']
+        }
+    },
+    methods: {
+        capitalizeString(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1)
         }
     }
+}
 </script>
 
 <style scoped>
-    
+    .date-card {
+        width: 20%;
+        height: 20vh;
+    }
 </style>
