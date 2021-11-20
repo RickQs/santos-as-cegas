@@ -1,6 +1,6 @@
 <template>
   <main class="container mt-3">
-    <button @click="goBack">Voltar</button>
+    <button @click="goBack" class="btn btn-secondary">Voltar</button>
     <router-view/>
   </main>
 </template>
