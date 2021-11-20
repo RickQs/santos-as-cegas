@@ -1,6 +1,8 @@
 <template>
-  <button @click="goBack">Voltar</button>
-  <router-view/>
+  <main class="container mt-3">
+    <button @click="goBack">Voltar</button>
+    <router-view/>
+  </main>
 </template>
 
 <script>
