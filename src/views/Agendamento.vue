@@ -12,13 +12,13 @@
                 </h2>
                 <div :id="`panelsStayOpen-collapse${capitalizeString(weekday)}`" class="accordion-collapse collapse show" :aria-labelledby="`panelsStayOpen-heading${capitalizeString(weekday)}`">
                     <div class="accordion-body">
-                        <div class="d-flex justify-content-evenly flex-wrap gap-3">
-                            <router-link v-for="items in date" :key="items.id" to="views/cadastro" class="date-card d-flex flex-column justify-content-center btn btn-light border-success">
+                        <div class="row row-cols-3 row-cols-md-6 row-cols-lg-6 justify-content-evenly gap-3">
+                            <router-link v-for="item in date" :key="item.id" to="views/cadastro" class="date-card d-flex flex-column justify-content-center btn btn-light border-success">
                                 <span>
-                                    <strong>{{ items.date }}</strong>
+                                    <strong>{{ item.date }}</strong>
                                 </span>
                                 <br />
-                                <span>{{ items.hour }}</span>
+                                <span>{{ item.hour }}</span>
                             </router-link>
                         </div>
                     </div>
@@ -48,7 +48,6 @@ export default {
 
 <style scoped>
     .date-card {
-        width: 20%;
-        height: 20vh;
+        height: 8rem;
     }
 </style>
