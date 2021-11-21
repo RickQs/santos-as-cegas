@@ -17,14 +17,14 @@
             </div>
             <div class="row mb-3">
                 <div class="col-12 col-md-12 col-lg-6">
-                    <label for="exampleInputAge" class="form-label">Idade</label>
-                    <input type="date" min="2003-01-01" class="form-control border-success" id="exampleInputAge" aria-describedby="ageHelp">
+                    <label for="exampleInputAge" class="form-label">Data de nascimento</label><small> (dd/mm/yyyy)</small>
+                    <input v-mask="'##/##/####'" type="tel" class="form-control border-success" id="exampleInputAge" aria-describedby="ageHelp">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-12 col-md-12 col-lg-6">
-                    <label for="exampleInputPhone" class="form-label">Telefone</label>
-                    <input type="tel" class="form-control border-success" id="exampleInputPhone" aria-describedby="phoneHelp">
+                    <label for="exampleInputPhone" class="form-label">Telefone</label><small> ((00) 00000-0000)</small>
+                    <input v-mask="['(##) ####-####', '(##) #####-####']" type="tel" class="form-control border-success" id="exampleInputPhone" aria-describedby="phoneHelp">
                 </div>
             </div>
             <div class="row mb-3">
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="mb-3 row">
+            <div class="row">
                 <div class="col-12 col-md-12 col-lg-6">
                     <router-link to="views/termo-consentimento">
                         <button class="btn btn-success w-100">Continuar</button>
