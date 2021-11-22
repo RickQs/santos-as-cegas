@@ -1,6 +1,10 @@
 <template>
-    <h1>Agendamento</h1>
-    <h2>Selecione a data e horário.</h2>
+    <div class="row my-3">
+        <div class="col-12 col-md-12 col-lg-6">
+            <h2>Agendamento</h2>
+            <h3>Selecione a data e horário.</h3>
+        </div>
+    </div>
 
     <section>
         <div class="accordion" id="accordionPanelsStayOpen">
