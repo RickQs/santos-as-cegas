@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Agendamento from '../views/Agendamento.vue'
 import Cadastro from '../views/Cadastro.vue'
 import TermoConsentimento from '../views/TermoConsentimento.vue'
+import Login from '../views/Login.vue'
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: '/agendamento',
     name: 'Agendamento',
     component: Agendamento
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/cadastro',
