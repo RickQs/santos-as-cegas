@@ -3,7 +3,7 @@
         <div class="col-12 col-md-12 col-lg-6">
             <h2>Cadastrar</h2>
             <h3>Preencha com suas informações.</h3>
-            <p>O sinal de <span style="color: #ff0000">*</span> indica que o preenchimento do campo é obrigatório.</p>
+            <p>O sinal de <span style="color: #AA2222"><strong>*</strong></span> indica que o preenchimento do campo é obrigatório.</p>
         </div>
     </div>
 
@@ -103,7 +103,8 @@ export default {
 <style scoped>
     .form-label::after {
         content: "*";
-        color: #ff0000;
+        color: #AA2222;
         padding-left: 0.25rem;
+        font-weight: bold;
     }
 </style>
