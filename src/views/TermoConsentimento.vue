@@ -75,21 +75,32 @@
                             </div>
                             <div v-if="arrayContains(answersList.slice(8), 'no')" class="modal-footer d-flex">
                                 <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" data-bs-toggle="modal">Voltar</button>
-                                <button class="btn btn-success" data-bs-dismiss="modal">Entendido</button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendido</button>
                             </div>
                             <div v-else-if="arrayContains(answersList.slice(0,8), 'yes')" class="modal-footer d-flex">
                                 <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" data-bs-toggle="modal">Voltar</button>
                                 <button @click="clearAnswersList" type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                                <button v-if="!isChecked" class="btn btn-success" data-bs-dismiss="modal" disabled>Enviar</button>
-                                <button v-else class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+                                <button v-if="!isChecked" @click="callToast" type="button" class="btn btn-success" data-bs-dismiss="modal" disabled>Enviar</button>
+                                <button v-else @click="callToast" type="button" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
                             </div>
                             <div v-else class="modal-footer d-flex">
                                 <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" data-bs-toggle="modal">Voltar</button>
                                 <button @click="clearAnswersList" type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                                <button class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+                                <button @click="callToast" type="button" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3">
+            <div ref="liveToast" class="toast align-items-center text-white bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Agendamento marcado com sucesso.
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
             </div>
         </div>
@@ -111,7 +122,6 @@ export default {
         appendAnswer(index, answer) {
             if (!this.answersList[index]) this.answersList.push(answer)
             else this.answersList[index] = answer
-            console.log(this.answersList)
         },
         clearAnswersList() {
             this.answersList = []
@@ -127,6 +137,13 @@ export default {
         },
         arrayContains(arr, target) {
             return arr.includes(target)
+        },
+        async callToast() {
+            const toast = new bootstrap.Toast(this.$refs.liveToast)
+            toast.show()
+
+            await new Promise(r => setTimeout(r, 3000))
+            this.$router.push('agendamento')
         }
     }
 }
