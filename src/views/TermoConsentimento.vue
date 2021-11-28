@@ -36,15 +36,15 @@
                                 <h5 class="modal-title" :id="`staticBackdropLabel${question.id}`">
                                     Questão {{ i + 1 }}
                                 </h5>
-                                <button @click="clearAnswersList" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button @click="clearAnswersList" type="button" class="btn-close" data-bs-dismiss="modal" tabindex="1" aria-label="Close"></button>
                             </div>
                         <div class="modal-body">
                             {{ question.question }}
                         </div>
                             <div class="modal-footer d-flex">
-                                <button v-show="i > 0" type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(question.id)" data-bs-toggle="modal">Anterior</button>
-                                <button @click="appendAnswer(i, 'no')" type="button" class="btn btn-secondary" :data-bs-target="nextModal(i, question.id)" data-bs-toggle="modal">{{ question.answers.no }}</button>
-                                <button @click="appendAnswer(i, 'yes')" type="button" class="btn btn-secondary" :data-bs-target="nextModal(i, question.id)" data-bs-toggle="modal">{{ question.answers.yes }}</button>
+                                <button v-show="i > 0" type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(question.id)" tabindex="2" data-bs-toggle="modal">Anterior</button>
+                                <button @click="appendAnswer(i, 'no')" type="button" class="btn btn-secondary" :data-bs-target="nextModal(i, question.id)" tabindex="3" data-bs-toggle="modal">{{ question.answers.no }}</button>
+                                <button @click="appendAnswer(i, 'yes')" type="button" class="btn btn-secondary" :data-bs-target="nextModal(i, question.id)" tabindex="4" data-bs-toggle="modal">{{ question.answers.yes }}</button>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                 <h5 v-else class="modal-title" id="staticBackdropSubmitLabel">
                                     Deseja terminar?
                                 </h5>
-                                <button @click="clearAnswersList" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button @click="clearAnswersList" type="button" class="btn-close" data-bs-dismiss="modal" tabindex="1" aria-label="Close"></button>
                             </div>
                             <div v-if="arrayContains(answersList.slice(8), 'no')" class="modal-body">
                                 <p>Ao responder <strong>"NÃO"</strong> em pelo menos uma das últimas 3 questões (9 a 11), você infelizmente não pode participar.</p>
@@ -69,24 +69,24 @@
                             <div v-else-if="arrayContains(answersList.slice(0,8), 'yes')" class="modal-body">
                                 <p>Ao responder <strong>"SIM"</strong> em pelo menos uma das questões de Prontidão para Atividade Física (1 a 8), é necessário apresentar atestado médico no dia do passeio.</p>
                                 <div class="form-check">
-                                    <input @click="toggleCheck" type="checkbox" class="form-check-input border-success" id="exampleCheck">
-                                    <label class="form-check-label" for="exampleCheck">Declaro que apresentarei atestado médico possibilitando atividades físicas aeróbicas.</label>
+                                    <input @click="toggleCheck" type="checkbox" class="form-check-input border-success" id="checkBtn" tabindex="2">
+                                    <label class="form-check-label" for="checkBtn">Declaro que apresentarei atestado médico possibilitando atividades físicas aeróbicas.</label>
                                 </div>
                             </div>
                             <div v-if="arrayContains(answersList.slice(8), 'no')" class="modal-footer d-flex">
-                                <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" data-bs-toggle="modal">Voltar</button>
-                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendido</button>
+                                <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" tabindex="2" data-bs-toggle="modal">Voltar</button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal" tabindex="3">Entendido</button>
                             </div>
                             <div v-else-if="arrayContains(answersList.slice(0,8), 'yes')" class="modal-footer d-flex">
-                                <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" data-bs-toggle="modal">Voltar</button>
-                                <button @click="clearAnswersList" type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                                <button v-if="!isChecked" @click="callToast" type="button" class="btn btn-success" data-bs-dismiss="modal" disabled>Enviar</button>
-                                <button v-else @click="callToast" type="button" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+                                <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" tabindex="2" data-bs-toggle="modal">Voltar</button>
+                                <button @click="clearAnswersList" type="button" class="btn btn-light" tabindex="3" data-bs-dismiss="modal">Cancelar</button>
+                                <button v-if="!isChecked" @click="callToast" type="button" class="btn btn-success" tabindex="4" data-bs-dismiss="modal" disabled>Enviar</button>
+                                <button v-else @click="callToast" type="button" class="btn btn-success" tabindex="4" data-bs-dismiss="modal">Enviar</button>
                             </div>
                             <div v-else class="modal-footer d-flex">
-                                <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" data-bs-toggle="modal">Voltar</button>
-                                <button @click="clearAnswersList" type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                                <button @click="callToast" type="button" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+                                <button type="button" class="me-auto btn btn-light" :data-bs-target="previousModal(questions.length)" tabindex="2" data-bs-toggle="modal">Voltar</button>
+                                <button @click="clearAnswersList" type="button" class="btn btn-light" tabindex="3" data-bs-dismiss="modal">Cancelar</button>
+                                <button @click="callToast" type="button" class="btn btn-success" tabindex="4" data-bs-dismiss="modal">Enviar</button>
                             </div>
                         </div>
                     </div>
