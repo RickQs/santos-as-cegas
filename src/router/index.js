@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
 import Agendamento from '../views/Agendamento.vue'
 import Cadastro from '../views/Cadastro.vue'
 import TermoConsentimento from '../views/TermoConsentimento.vue'
@@ -9,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Agendamento
   },
   {
     path: '/agendamento',
